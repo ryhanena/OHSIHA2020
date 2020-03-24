@@ -1,9 +1,11 @@
 from django.db import models
 
 class sportField(models.Model):
-    fieldId = models.CharField(max_length=20)
+    #Luo automaattisesti myös ID:n, fieldId turha?
+    fieldId = models.IntegerField()
     fieldName = models.CharField(max_length=100)
     fieldLocation = models.CharField(max_length=200)
-    class Meta:
-        db_table = "sportField"
-# Create your models here.
+
+    def __str__(self):
+        return self.fieldName
+    

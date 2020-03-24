@@ -32,14 +32,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'sportFields',
-    'widget_tweaks',
+    'widget_tweaks', #tarviiko
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
 ]
 
 MIDDLEWARE = [
@@ -128,3 +127,4 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+

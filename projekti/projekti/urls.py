@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView #uus
-#from sportFields import views
+from sportFields import views
+
 
 urlpatterns = [ #Mitä vaihtoehtoja
     path('admin/', admin.site.urls),
-    #path('', include('tasks.urls')),
-    path('', include('sportFields.urls')),
+    path('sportFields/', include('sportFields.urls'), name='sportFields'),
     path('accounts/', include('accounts.urls')), #Uus
     path('accounts/', include('django.contrib.auth.urls')), #Uus
-    #path('', TemplateView.as_view(template_name='home.html'), name='home'), #uus
+    path('', TemplateView.as_view(template_name='home.html'), name='home'), #uus
 ]
+
