@@ -6,27 +6,34 @@
     </div>
     <br>
     <div class="row">
-            <div class="col-md-8 ">
-                <table class="table table-striped"><tr><th>Kentan ID</th><th>Nimi</th><th>Sijainti</th><th>Pinta-ala (m2)</th></tr>
+            <div class="col-md-9 ">
+                <table class="table table-striped"><tr><th>Nimi</th><th>Sijainti</th><th>Osoite
+                </th><th>Käyttöaika</th><th>Erityiskäyttö</th><th>Pinta-ala (m2)</th></tr>
                     {% for field in fielddata %}
                         <tr>
-                            <td>{{ field.VIHERALUEEN_OSAN_ID }}</td>
                             <td>{{ field.ALUE_NIMI }}</td>
                             <td>{{ field.KAUPUNGINOSA }}</td>
+                            <td><a href="map/{{ field.ALUE_NIMI }}/{{ field.KAUPUNGINOSA }}">{{ field.ALUE_SIJ }}</a></td>
+                            <td>{{ field.KP_KAUSI }}</td>
+                            <td>{{ field.ERITYISKAYTTO }}</td>
                             <td>{{ field.PINTA_ALA }}</td>
                         </tr>
                     {% endfor %}
                 </table>
             </div>
-            <div class="col-md-4 ">
+            <div class="col-md-3 ">
                 <form action="" method="POST">
                     {% csrf_token %}
                     <input type="text" id="location" name="location" placeholder="Esim.hervanta">
                     <input type="submit" value="Rajaa sijainti"><br>
                     <small>Kaikki tulokset = "all"</small>
                 </form>
+                <br><br>
+                <div  id="container" style="height: 400px;"></div>
             </div>
     </div>
     <div><a href="https://data.tampere.fi/data/fi/dataset/tampereen-peli-ja-palloilukentat"> Lähde data.tampere.fi </a></div>
-    
+    <script>
+        Highcharts.chart('container', {{ chart|safe }});
+    </script>
 {% endblock %}
