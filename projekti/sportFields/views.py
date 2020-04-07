@@ -85,7 +85,7 @@ def map(request, fName, kOsa):
     # https://openrouteservice-py.readthedocs.io/en/latest/
     myLocation = geocoder.ip('me').latlng
     coords = ((myLocation[1],myLocation[0]),(lon, lat))
-    client = openrouteservice.Client(key='5b3ce3597851110001cf624802b884428e944a01b97a52106fc5f74f') # Specify your personal API key
+    client = openrouteservice.Client(key='') # Specify your personal API key
     routes = client.directions(coords)
     geometry =  routes['routes'][0]['geometry'] #Geometriatiedot
     decoded = convert.decode_polyline(geometry) #Hakee 'coordinates': [[lon, lan][lon,lan] yms...]
